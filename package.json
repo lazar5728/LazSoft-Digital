@@ -1,0 +1,17 @@
+{
+  "name": "lazsoft-digital-secure",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Site sécurisé avec protection contre les injections, les abus et les attaques par force brute.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "express-rate-limit": "^7.7.0",
+    "helmet": "^8.1.0",
+    "validator": "^13.1.0"
+  }
+}
