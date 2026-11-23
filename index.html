@@ -21,6 +21,7 @@
             .admin-mode .client-logos.admin-only { display: block !important; }
             .admin-mode .admin-panel.admin-only { display: block !important; }
             .admin-mode .added-projects.admin-only { display: block !important; }
+            .admin-mode #add-demo-button.admin-only { display: inline-flex !important; }
         </style>
     </head>
     <body>
@@ -116,7 +117,11 @@
         <div class="section-head"><div>
             <div class="eyebrow">Nos démonstrations</div>
             <h2>Un aperçu de<br><em>ce qui est possible.</em>
-            </h2></div><p>Ces templates sont des projets de démonstration. Ils illustrent ce que nous pouvons imaginer pour votre activité.</p></div><div class="portfolio"><article class="project p1"><div class="project-ui"><span>SAFARI</span><strong>Le goût du voyage.</strong><i>restaurant.ne</i></div><div class="project-info"><span>01 · Restaurant</span><h3>Safari Restaurant</h3><button class="demo-btn">Voir la démo ↗</button></div></article><article class="project p2"><div class="project-ui"><span>HABITAT</span><strong>Votre prochain chez-vous.</strong><i>habitat.ne</i></div><div class="project-info"><span>02 · Immobilier</span><h3>Habitat Niamey</h3><button class="demo-btn">Voir la démo ↗</button></div></article><article class="project p3"><div class="project-ui"><span>GARAGE 227</span><strong>Votre route, notre métier.</strong><i>garage227.ne</i></div><div class="project-info"><span>03 · Automobile</span><h3>Garage 227</h3><button class="demo-btn">Voir la démo ↗</button></div></article><article class="project p4"><div class="project-ui"><span>UP FORMATION</span><strong>Apprendre. Évoluer. Réussir.</strong><i>upformation.ne</i></div><div class="project-info"><span>04 · Formation</span><h3>Up Formation</h3><button class="demo-btn">Voir la démo ↗</button></div></article><article class="project p5"><div class="project-ui"><span>SAHEL TRAVEL</span><strong>Le monde commence ici.</strong><i>saheltravel.ne</i></div><div class="project-info"><span>05 · Voyage</span><h3>Sahel Travel</h3><button class="demo-btn">Voir la démo ↗</button></div></article></div></div></section>
+            </h2></div><p>Chaque démonstration ouvre un site HTML enregistré dans le dossier <code>site_client</code>. Ajoutez vos fichiers dans ce dossier puis reliez-les ici depuis le mode gestion.</p></div>
+        <div class="portfolio" id="demo-list"></div>
+        <div class="demo-admin-action"><button class="btn btn-outline admin-only" id="add-demo-button" type="button" data-content-type="demo" hidden>Ajouter une démonstration</button></div>
+    </div>
+</section>
 <section class="added-projects admin-only" id="added-projects-section" hidden>
     <div class="container">
         <div class="section-head">

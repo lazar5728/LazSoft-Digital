@@ -255,6 +255,17 @@
     position: relative;
 }
 
+.demo-admin-action {
+    display: flex;
+    justify-content: center;
+    margin-top: 28px;
+}
+
+.demo-btn {
+    display: inline-block;
+    cursor: pointer;
+}
+
 .project-preview {
     position: absolute;
     inset: 0;

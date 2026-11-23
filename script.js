@@ -67,13 +67,6 @@ if (contactForm && contactStatus) {
   });
 }
 
-document.querySelectorAll('.demo-btn').forEach((button) => {
-  button.addEventListener('click', () => {
-    button.textContent = 'Démo bientôt disponible ↗';
-    button.disabled = true;
-  });
-});
-
 const contentKey = 'lazsof-digital-content-draft-v1';
 const contentStatus = document.querySelector('#admin-status');
 const editorDialog = document.querySelector('#content-editor');
@@ -82,7 +75,7 @@ const editorFields = document.querySelector('#editor-fields');
 const editorTitle = document.querySelector('#editor-title');
 const editorError = document.querySelector('#editor-error');
 let currentContentType = '';
-let content = { logos: [], testimonials: [], projects: [] };
+let content = { logos: [], testimonials: [], projects: [], demos: [] };
 let contentReady = false;
 
 const fieldDefinitions = {
@@ -113,10 +106,28 @@ const fieldDefinitions = {
       { name: 'image', label: 'Image dans le dossier images (facultatif)', type: 'text', required: false, placeholder: 'images/mon-projet.png', maxLength: 180 },
       { name: 'url', label: 'Lien du projet (facultatif)', type: 'url', required: false, placeholder: 'https://exemple.com', maxLength: 300 }
     ]
+  },
+  demo: {
+    title: 'Ajouter une démonstration',
+    collection: 'demos',
+    fields: [
+      { name: 'title', label: 'Nom du site', type: 'text', required: true, maxLength: 100 },
+      { name: 'category', label: 'Type de site', type: 'text', required: true, maxLength: 60 },
+      { name: 'tagline', label: 'Phrase de présentation', type: 'text', required: true, maxLength: 140 },
+      { name: 'path', label: 'Fichier HTML dans site_client', type: 'text', required: true, placeholder: 'Cakes by Rk.html ou dossier/index.html', maxLength: 240 }
+    ]
   }
 };
 
 const isImagePath = (value) => /^images\/[A-Za-z0-9._/-]+$/.test(value) && !value.split('/').includes('..');
+const isDemoPath = (value) => typeof value === 'string' &&
+  value.length <= 240 &&
+  value.toLowerCase().endsWith('.html') &&
+  !value.startsWith('/') &&
+  !value.includes('\\') &&
+  value.split('/').every((segment) =>
+    segment && segment !== '.' && segment !== '..' && !/[?#%<>:"|*\x00-\x1f]/.test(segment)
+  );
 const isHttpUrl = (value) => {
   try {
     return ['http:', 'https:'].includes(new URL(value).protocol);
@@ -143,6 +154,11 @@ const validateEntry = (type, entry) => {
       (!entry.url || (typeof entry.url === 'string' && entry.url.length <= 300 && isHttpUrl(entry.url)))) {
     return;
   }
+  if (type === 'demo' &&
+      typeof entry.title === 'string' && entry.title.length <= 100 &&
+      typeof entry.category === 'string' && entry.category.length <= 60 &&
+      typeof entry.tagline === 'string' && entry.tagline.length <= 140 &&
+      isDemoPath(entry.path)) return;
 
   throw new Error('Un élément du fichier de contenu est invalide.');
 };
@@ -151,13 +167,16 @@ const validateContent = (value) => {
   if (!value || typeof value !== 'object' ||
       !Array.isArray(value.logos) ||
       !Array.isArray(value.testimonials) ||
-      !Array.isArray(value.projects)) {
-    throw new Error('Le fichier site-content.json doit contenir les listes logos, testimonials et projects.');
+      !Array.isArray(value.projects) ||
+      (value.demos !== undefined && !Array.isArray(value.demos))) {
+    throw new Error('Le fichier site-content.json doit contenir les listes logos, testimonials, projects et demos.');
   }
 
+  if (!value.demos) value.demos = [];
   value.logos.forEach((entry) => validateEntry('logo', entry));
   value.testimonials.forEach((entry) => validateEntry('testimonial', entry));
   value.projects.forEach((entry) => validateEntry('project', entry));
+  value.demos.forEach((entry) => validateEntry('demo', entry));
   return value;
 };
 
@@ -241,6 +260,7 @@ const renderContent = () => {
   const testimonialEmpty = document.querySelector('#testimonial-empty');
   const projectSection = document.querySelector('#added-projects-section');
   const projectList = document.querySelector('#added-projects');
+  const demoList = document.querySelector('#demo-list');
 
   renderLogoCarousel();
   startLogoCarousel();
@@ -301,6 +321,31 @@ const renderContent = () => {
 
   projectSection.hidden = !adminMode && content.projects.length === 0;
   if (!adminMode && content.projects.length > 0) projectSection.classList.remove('admin-only');
+
+  demoList.replaceChildren();
+  content.demos.forEach((demo, index) => {
+    const card = document.createElement('article');
+    card.className = `project p${(index % 5) + 1}`;
+    const preview = document.createElement('div');
+    preview.className = 'project-ui';
+    appendText(preview, 'span', '', demo.category);
+    appendText(preview, 'strong', '', demo.tagline);
+    card.append(preview);
+
+    const details = document.createElement('div');
+    details.className = 'project-info';
+    appendText(details, 'span', '', demo.category);
+    appendText(details, 'h3', '', demo.title);
+    const link = document.createElement('a');
+    link.href = `site_client/${demo.path.split('/').map(encodeURIComponent).join('/')}`;
+    link.target = '_blank';
+    link.rel = 'noopener noreferrer';
+    link.className = 'demo-btn';
+    link.textContent = 'Voir la démo ↗';
+    details.append(link);
+    card.append(details);
+    demoList.append(card);
+  });
 };
 
 const loadContent = async () => {
@@ -423,6 +468,10 @@ if (editorForm && editorDialog && editorError) {
         editorError.textContent = 'Indique un lien web valide commençant par https://.';
         return;
       }
+    }
+    if (currentContentType === 'demo' && !isDemoPath(entry.path)) {
+      editorError.textContent = 'Indique un fichier HTML valide dans site_client, sans remonter vers un autre dossier.';
+      return;
     }
 
     content[definition.collection].push(entry);

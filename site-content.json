@@ -1,5 +1,14 @@
 {
   "logos": [],
   "testimonials": [],
-  "projects": []
+  "projects": [],
+  "demos": [
+    {
+      "id": "cakes-by-rk",
+      "title": "Cakes by Rk",
+      "category": "Pâtisserie",
+      "tagline": "Des créations gourmandes à Niamey.",
+      "path": "Cakes by Rk.html"
+    }
+  ]
 }
