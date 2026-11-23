@@ -124,15 +124,39 @@ app.post('/api/contact', contactLimiter, (req, res) => {
   });
 });
 
-app.use(express.static(path.join(__dirname), {
-  index: 'index.html',
-  setHeaders: (res) => {
-    res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
-  }
+const publicFiles = new Map([
+  ['/', 'index.html'],
+  ['/index.html', 'index.html'],
+  ['/styles.css', 'styles.css'],
+  ['/content.css', 'content.css'],
+  ['/script.js', 'script.js'],
+  ['/md5.js', 'md5.js'],
+  ['/site-content.json', 'site-content.json'],
+  ['/Lazsoft_Digital.wav', 'Lazsoft_Digital.wav']
+]);
+
+publicFiles.forEach((file, route) => {
+  app.get(route, (req, res) => {
+    res.setHeader('Cache-Control', route.endsWith('.html') ? 'no-cache' : 'public, max-age=3600');
+    res.sendFile(path.join(__dirname, file));
+  });
+});
+
+app.use('/images', express.static(path.join(__dirname, 'images'), {
+  dotfiles: 'deny',
+  index: false
+}));
+app.use('/assets', express.static(path.join(__dirname, 'assets'), {
+  dotfiles: 'deny',
+  index: false
+}));
+app.use('/site_client', express.static(path.join(__dirname, 'site_client'), {
+  dotfiles: 'deny',
+  index: 'index.html'
 }));
 
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'index.html'));
+app.use((req, res) => {
+  res.status(404).json({ ok: false, message: 'Ressource introuvable.' });
 });
 
 app.use((err, req, res, next) => {

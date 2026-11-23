@@ -1,12 +1,3 @@
-const adminMode = new URLSearchParams(window.location.search).get('admin') === '1';
-
-if (adminMode) {
-  document.documentElement.classList.add('admin-mode');
-  document.querySelectorAll('.admin-only[hidden]').forEach((element) => {
-    element.removeAttribute('hidden');
-  });
-}
-
 const toggle = document.querySelector('.menu-toggle');
 const nav = document.querySelector('.nav-links');
 
