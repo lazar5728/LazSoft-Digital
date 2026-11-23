@@ -9,6 +9,13 @@
       "category": "Pâtisserie",
       "tagline": "Des créations gourmandes à Niamey.",
       "path": "Cakes by Rk.html"
+    },
+    {
+      "id": "saveurs-du-niger",
+      "title": "Saveurs du Niger",
+      "category": "Restaurant",
+      "tagline": "La vraie cuisine nigérienne à Niamey.",
+      "path": "restaurant.html"
     }
   ]
 }
