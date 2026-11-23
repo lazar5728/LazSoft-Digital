@@ -1,0 +1,457 @@
+.audio-intro {
+    padding: 38px 0;
+    background: #f6f8fc;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+}
+
+.audio-intro-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 35px;
+}
+
+.audio-intro .eyebrow {
+    margin-bottom: 10px;
+}
+
+.audio-intro h2 {
+    font-size: clamp(25px, 3vw, 34px);
+    letter-spacing: -1px;
+}
+
+.audio-intro p {
+    margin: 10px 0 0;
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.audio-intro audio {
+    width: min(390px, 100%);
+}
+
+.client-logos {
+    background: #f6f8fc;
+}
+
+.logo-empty-state {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 28px;
+    border: 1px dashed #cbd6e8;
+    border-radius: 10px;
+    background: #fff;
+}
+
+.logo-empty-state>div {
+    flex: 1;
+}
+
+.client-logo-carousel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    min-width: min(100%, 360px);
+    margin-top: 16px;
+}
+
+.client-logo-grid {
+    display: grid;
+    place-items: center;
+    width: 100%;
+    min-height: 120px;
+}
+
+.client-logo-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    color: var(--navy);
+    font-size: 12px;
+    font-weight: 700;
+    animation: logo-arrive .35s ease both;
+}
+
+.client-logo-card img {
+    width: min(220px, 60vw);
+    height: 90px;
+    object-fit: contain;
+    padding: 8px;
+}
+
+.client-logo-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+.client-logo-controls button {
+    min-width: 38px;
+    min-height: 36px;
+    padding: 6px 10px;
+    border: 1px solid var(--line);
+    border-radius: 5px;
+    background: #fff;
+    color: var(--navy);
+    font: inherit;
+    cursor: pointer;
+}
+
+.client-logo-controls button:hover {
+    border-color: var(--blue);
+    color: var(--blue);
+}
+
+#client-logo-counter {
+    min-width: 38px;
+    color: var(--muted);
+    font-size: 11px;
+    text-align: center;
+}
+
+@keyframes logo-arrive {
+    from { opacity: 0; transform: translateY(5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.logo-empty-icon {
+    display: grid;
+    place-items: center;
+    flex: 0 0 48px;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: #edf3ff;
+    color: var(--blue);
+    font-size: 25px;
+}
+
+.logo-empty-state strong {
+    color: var(--navy);
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+.logo-empty-state p {
+    margin: 6px 0 0;
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.logo-empty-state code {
+    color: var(--blue);
+}
+
+.logo-empty-state>div>strong[hidden] {
+    display: none;
+}
+
+.logo-empty-state .btn {
+    flex-shrink: 0;
+    margin-left: auto;
+}
+
+.content-actions {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 25px;
+}
+
+.admin-only {
+    display: none !important;
+}
+
+.admin-mode .content-actions.admin-only {
+    display: flex !important;
+}
+
+.admin-mode .logo-empty-state .admin-only {
+    display: inline-flex !important;
+}
+
+.admin-mode .client-logos.admin-only {
+    display: block !important;
+}
+
+.admin-mode .admin-panel.admin-only {
+    display: block !important;
+}
+
+.admin-mode .added-projects.admin-only {
+    display: block !important;
+}
+
+.portfolio-action {
+    padding: 0 0 72px;
+}
+
+.admin-mode .portfolio-action.admin-only {
+    display: block !important;
+}
+
+.portfolio-action .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 20px 24px;
+    border-radius: 8px;
+    background: #f6f8fc;
+}
+
+.portfolio-action p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.testimonial-cards {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+    margin-top: 24px;
+}
+
+.testimonial-card {
+    padding: 22px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: #fff;
+    text-align: left;
+}
+
+.testimonial-card>p {
+    margin: 0 0 18px;
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.65;
+}
+
+.testimonial-attribution {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.testimonial-attribution strong {
+    color: var(--navy);
+    font-size: 13px;
+}
+
+.testimonial-attribution span {
+    color: var(--muted);
+    font-size: 11px;
+}
+
+.project-ui {
+    position: relative;
+}
+
+.project-preview {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.project-ui>span,
+.project-ui>strong,
+.project-ui>i {
+    position: relative;
+    z-index: 1;
+    text-shadow: 0 1px 5px #0008;
+}
+
+.admin-panel {
+    padding: 26px 0;
+    background: var(--navy);
+    color: #fff;
+}
+
+.admin-panel-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.admin-panel h2 {
+    color: #fff;
+    font-size: 24px;
+    letter-spacing: -0.5px;
+}
+
+.admin-panel p {
+    max-width: 700px;
+    margin: 8px 0 0;
+    color: #c3cee2;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.admin-panel code {
+    color: #fff;
+}
+
+#admin-status {
+    flex-basis: 100%;
+}
+
+.content-editor {
+    position: fixed;
+    width: min(560px, calc(100% - 32px));
+    max-height: min(90vh, 760px);
+    padding: 0;
+    border: 0;
+    border-radius: 10px;
+    color: var(--ink);
+    box-shadow: 0 25px 80px #071a4550;
+}
+
+.content-editor::backdrop {
+    background: #071a4580;
+}
+
+.content-editor form {
+    position: relative;
+    padding: 32px;
+}
+
+.content-editor h2 {
+    margin: 0 30px 24px 0;
+    font-size: 30px;
+    letter-spacing: -1px;
+}
+
+.editor-close {
+    position: absolute;
+    top: 16px;
+    right: 18px;
+    border: 0;
+    background: none;
+    color: var(--muted);
+    font-size: 28px;
+    cursor: pointer;
+}
+
+#editor-fields label {
+    display: block;
+    margin-bottom: 16px;
+    color: var(--ink);
+    font-size: 12px;
+    font-weight: 700;
+}
+
+#editor-fields input,
+#editor-fields textarea {
+    display: block;
+    width: 100%;
+    margin-top: 7px;
+    padding: 12px;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    font: inherit;
+    font-size: 13px;
+}
+
+#editor-fields textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.editor-error {
+    color: #b42318;
+    font-size: 12px;
+}
+
+.editor-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.content-actions .btn-ghost {
+    border-color: var(--line);
+}
+
+.content-actions .btn:focus-visible,
+.logo-empty-state .btn:focus-visible,
+.audio-intro audio:focus-visible {
+    outline: 3px solid #7ca8ff;
+    outline-offset: 3px;
+}
+
+@media (max-width: 680px) {
+    .audio-intro {
+        padding: 30px 0;
+    }
+
+    .audio-intro-inner {
+        align-items: stretch;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .audio-intro audio {
+        width: 100%;
+    }
+
+    .logo-empty-state {
+        align-items: flex-start;
+        flex-wrap: wrap;
+        padding: 22px;
+    }
+
+    .testimonial-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .admin-panel-inner {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .content-editor form {
+        padding: 26px 20px;
+    }
+
+    .logo-empty-state .btn {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .client-logo-carousel {
+        min-width: 100%;
+    }
+
+    .client-logo-controls {
+        gap: 7px;
+    }
+
+    .portfolio-action {
+        padding-bottom: 48px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .client-logo-card {
+            animation: none;
+        }
+    }
+
+    .portfolio-action .container {
+        align-items: stretch;
+        flex-direction: column;
+    }
+}

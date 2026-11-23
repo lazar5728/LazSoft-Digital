@@ -1,27 +1,17 @@
-# Lazsoft Digital Studio - Site sécurisé
+# Lazsoft Digital Studio
 
-Ce projet a été renforcé avec une couche de protection pour limiter les menaces courantes :
+Site vitrine statique en HTML, CSS et JavaScript, hébergé sur GitHub Pages.
 
-- prévention des injections SQL et XSS
-- validation stricte des formulaires
-- limitation de débit (rate limiting)
-- en-têtes de sécurité HTTP
-- blocage des attaques de force brute sur les endpoints sensibles
+## Aperçu local
 
-## Démarrage
+Ouvrez le dossier avec VS Code et lancez `index.html` avec Live Server. Le chargement de `site-content.json` nécessite un serveur statique local.
 
-```bash
-npm install
-npm start
-```
+## Gestion des témoignages, logos et réalisations
 
-Puis ouvrez :
-
-```text
-http://localhost:3000
-```
-
-## Points importants
-
-- Ce site reste un site statique, donc la sécurité réelle nécessite aussi une configuration HTTPS, sauvegardes, surveillance et un hébergement sécurisé.
-- Pour un vrai formulaire de contact, il faut connecter l’API à un service backend comme Nodemailer, SendGrid ou une base de données protégée.
+- Les boutons de gestion sont masqués par défaut. Pour les afficher, ouvrez le site avec `?admin=1`, par exemple `https://lazsoft-digital-studio.com/?admin=1`.
+- Le mode `?admin=1` est seulement visuel, pas une authentification. Toute personne connaissant l’adresse peut afficher les boutons.
+- Les ajouts sont prévisualisés et sauvegardés comme brouillons dans le navigateur de gestion. Ils ne sont pas publiés pour les visiteurs automatiquement.
+- Cliquez sur « Télécharger les changements », remplacez `site-content.json` dans le projet par le fichier téléchargé, ajoutez les images référencées dans `images`, puis publiez les changements sur GitHub Pages.
+- Les logos publiés défilent automatiquement un par un toutes les 5 secondes. Les commandes précédent/suivant et pause/reprise sont disponibles lorsqu’il y a plusieurs logos.
+- Le formulaire de contact ouvre le logiciel de messagerie par défaut avec les champs préremplis.
+- Le lecteur audio de l’accueil utilise `Lazsoft_Digital.wav`. Le logo du site se trouve dans `images/logo.png`.
