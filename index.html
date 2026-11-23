@@ -21,7 +21,7 @@
             .admin-mode .client-logos.admin-only { display: block !important; }
             .admin-mode .admin-panel.admin-only { display: block !important; }
             .admin-mode .added-projects.admin-only { display: block !important; }
-            .admin-mode #add-demo-button.admin-only { display: inline-flex !important; }
+            .admin-mode .demo-admin-action.admin-only { display: flex !important; }
         </style>
     </head>
     <body>
@@ -119,7 +119,7 @@
             <h2>Un aperçu de<br><em>ce qui est possible.</em>
             </h2></div><p>Chaque démonstration ouvre un site HTML enregistré dans le dossier <code>site_client</code>. Ajoutez vos fichiers dans ce dossier puis reliez-les ici depuis le mode gestion.</p></div>
         <div class="portfolio" id="demo-list"></div>
-        <div class="demo-admin-action"><button class="btn btn-outline admin-only" id="add-demo-button" type="button" data-content-type="demo" hidden>Ajouter une démonstration</button></div>
+        <div class="demo-admin-action admin-only" id="demo-admin-action" hidden><button class="btn btn-outline" id="add-demo-button" type="button" data-content-type="demo">Ajouter une démonstration</button></div>
     </div>
 </section>
 <section class="added-projects admin-only" id="added-projects-section" hidden>

@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Saveurs du Niger – Restaurant nigérien à Niamey</title>
+<meta name="description" content="Restaurant de cuisine nigérienne à Niamey : riz gras, tchoukou, poisson du fleuve, brochettes, bissap. Commandez sur WhatsApp.">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+  html{scroll-behavior:smooth;scroll-padding-top:80px}
+  body{font-family:'Poppins',system-ui,sans-serif;background:#faf7f2;color:#2b2118;padding-bottom:70px}
+  @media(min-width:768px){body{padding-bottom:0}}
+  .hero-bg{background:linear-gradient(rgba(20,10,0,.62),rgba(20,10,0,.62)),url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1374&q=80') center/cover}
+  .niger-bar{height:5px;background:linear-gradient(90deg,#E05206 33%,#fff 33% 66%,#0DB02B 66%)}
+  .dish:hover{transform:translateY(-4px);box-shadow:0 10px 20px rgba(0,0,0,.1)}
+  .dish{transition:.25s}
+  a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #0DB02B;outline-offset:2px}
+</style>
+</head>
+<body>
+
+<div class="niger-bar"></div>
+<!-- Header -->
+<header class="bg-white shadow-md sticky top-0 z-40">
+  <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+    <a href="#accueil" class="flex items-center">
+      <i class="fas fa-utensils text-orange-600 text-3xl mr-2"></i>
+      <span class="text-2xl font-bold">Saveurs du <span class="text-orange-600">Niger</span></span>
+    </a>
+    <nav class="hidden md:flex items-center space-x-7" aria-label="Navigation principale">
+      <a href="#accueil" class="hover:text-orange-600 font-medium">Accueil</a>
+      <a href="#menu" class="hover:text-orange-600 font-medium">Menu</a>
+      <a href="#reserver" class="hover:text-orange-600 font-medium">Réserver</a>
+      <a href="#about" class="hover:text-orange-600 font-medium">À propos</a>
+      <a href="#contact" class="hover:text-orange-600 font-medium">Contact</a>
+      <a data-wa href="#" target="_blank" rel="noopener" class="bg-green-600 hover:bg-green-700 text-white font-semibold px-4 py-2 rounded-lg"><i class="fab fa-whatsapp mr-1"></i> WhatsApp</a>
+    </nav>
+    <button id="menu-toggle" class="md:hidden text-2xl p-2" aria-label="Ouvrir le menu" aria-expanded="false"><i class="fas fa-bars"></i></button>
+  </div>
+  <div id="mobile-menu" class="md:hidden hidden bg-white w-full py-3 px-4 shadow-md border-t">
+    <div class="flex flex-col">
+      <a href="#accueil" class="py-3 font-medium border-b">Accueil</a>
+      <a href="#menu" class="py-3 font-medium border-b">Menu</a>
+      <a href="#reserver" class="py-3 font-medium border-b">Réserver</a>
+      <a href="#about" class="py-3 font-medium border-b">À propos</a>
+      <a href="#contact" class="py-3 font-medium">Contact</a>
+    </div>
+  </div>
+</header>
+
+<!-- Hero -->
+<section id="accueil" class="hero-bg text-white">
+  <div class="container mx-auto px-4 py-20 md:py-32 max-w-4xl text-center">
+    <p id="open-status" class="inline-block bg-white/15 backdrop-blur px-4 py-1 rounded-full text-sm mb-5"></p>
+    <h1 class="text-4xl md:text-6xl font-bold mb-4">La vraie cuisine <span class="text-orange-400">nigérienne</span> à Niamey</h1>
+    <p class="text-lg md:text-xl mb-8 text-gray-100">Riz gras, tchoukou, poisson du fleuve braisé, brochettes et jus de bissap : des recettes du pays, préparées chaque jour avec des produits frais.</p>
+    <div class="flex flex-col sm:flex-row gap-3 justify-center">
+      <a href="#menu" class="bg-orange-600 hover:bg-orange-700 font-bold py-3 px-7 rounded-lg">Voir le menu</a>
+      <a data-wa href="#" target="_blank" rel="noopener" class="bg-green-600 hover:bg-green-700 font-bold py-3 px-7 rounded-lg"><i class="fab fa-whatsapp mr-1"></i> Commander</a>
+      <a href="#reserver" class="border-2 border-white hover:bg-white hover:text-gray-900 font-bold py-3 px-7 rounded-lg">Réserver une table</a>
+    </div>
+  </div>
+</section>
+
+<!-- Infos rapides -->
+<section class="bg-white border-b">
+  <div class="container mx-auto px-4 py-6 grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
+    <a data-map href="#" target="_blank" rel="noopener" class="flex items-center justify-center gap-3 hover:text-orange-600"><i class="fas fa-map-marker-alt text-orange-600 text-xl"></i><span data-address></span></a>
+    <a data-tel href="#" class="flex items-center justify-center gap-3 hover:text-orange-600"><i class="fas fa-phone text-orange-600 text-xl"></i><span data-phone></span></a>
+    <div class="flex items-center justify-center gap-3"><i class="fas fa-clock text-orange-600 text-xl"></i><span data-hours-short></span></div>
+  </div>
+</section>
+
+<!-- Menu -->
+<section id="menu" class="py-16 bg-white">
+  <div class="container mx-auto px-4">
+    <h2 class="text-3xl font-bold text-center mb-3">Notre <span class="text-orange-600">Menu</span></h2>
+    <p class="text-center text-gray-600 max-w-2xl mx-auto mb-8">Appuyez sur « Ajouter » pour composer votre commande, puis envoyez-la en un clic sur WhatsApp.</p>
+    <div id="filters" class="flex flex-wrap justify-center gap-2 mb-10" role="tablist"></div>
+    <div id="menu-items" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+    <p class="text-center text-sm text-gray-500 mt-8"><i class="fas fa-pepper-hot text-red-500"></i> = plat épicé · Prix en FCFA</p>
+  </div>
+</section>
+
+<!-- Réservation -->
+<section id="reserver" class="py-16 bg-orange-50">
+  <div class="container mx-auto px-4 max-w-2xl">
+    <h2 class="text-3xl font-bold text-center mb-3">Réserver une <span class="text-orange-600">table</span></h2>
+    <p class="text-center text-gray-600 mb-8">Votre demande est envoyée directement sur WhatsApp, nous confirmons rapidement.</p>
+    <form id="resa-form" class="bg-white p-6 rounded-xl shadow-md grid gap-4">
+      <div class="grid sm:grid-cols-2 gap-4">
+        <label class="flex flex-col gap-1 font-medium">Nom<input id="r-name" required class="px-4 py-2 border rounded-lg font-normal" autocomplete="name"></label>
+        <label class="flex flex-col gap-1 font-medium">Nombre de personnes<input id="r-n" type="number" min="1" max="50" value="2" required class="px-4 py-2 border rounded-lg font-normal"></label>
+      </div>
+      <div class="grid sm:grid-cols-2 gap-4">
+        <label class="flex flex-col gap-1 font-medium">Date<input id="r-date" type="date" required class="px-4 py-2 border rounded-lg font-normal"></label>
+        <label class="flex flex-col gap-1 font-medium">Heure<input id="r-time" type="time" required value="19:30" class="px-4 py-2 border rounded-lg font-normal"></label>
+      </div>
+      <label class="flex flex-col gap-1 font-medium">Précisions (facultatif)<textarea id="r-note" rows="2" class="px-4 py-2 border rounded-lg font-normal" placeholder="Anniversaire, terrasse, chaise bébé..."></textarea></label>
+      <button class="bg-green-600 hover:bg-green-700 text-white font-bold py-3 rounded-lg"><i class="fab fa-whatsapp mr-1"></i> Envoyer ma demande sur WhatsApp</button>
+    </form>
+  </div>
+</section>
+
+<!-- À propos -->
+<section id="about" class="py-16 bg-white">
+  <div class="container mx-auto px-4 flex flex-col md:flex-row items-center gap-10">
+    <div class="md:w-1/2"><img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1000&q=80" alt="Salle du restaurant" class="rounded-xl shadow-lg w-full" loading="lazy"></div>
+    <div class="md:w-1/2">
+      <h2 class="text-3xl font-bold mb-4">Notre <span class="text-orange-600">histoire</span></h2>
+      <p class="text-gray-600 mb-4">Saveurs du Niger est né à Niamey d'une envie simple : faire goûter la cuisine de chez nous comme à la maison, dans un cadre accueillant.</p>
+      <p class="text-gray-600 mb-6">Nous cuisinons chaque jour avec des produits frais du marché et le poisson du fleuve Niger, selon les recettes transmises de génération en génération.</p>
+      <ul class="space-y-3">
+        <li class="flex gap-3"><i class="fas fa-leaf text-green-600 mt-1"></i> Produits frais et locaux</li>
+        <li class="flex gap-3"><i class="fas fa-fire text-orange-600 mt-1"></i> Cuisson au feu de bois pour les grillades</li>
+        <li class="flex gap-3"><i class="fas fa-motorcycle text-orange-600 mt-1"></i> Sur place, à emporter ou en livraison</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- Témoignages -->
+<section class="py-16 bg-orange-600 text-white">
+  <div class="container mx-auto px-4">
+    <h2 class="text-3xl font-bold text-center mb-10">Ce que disent nos <span class="text-gray-900">clients</span></h2>
+    <div id="testimonials" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section id="contact" class="py-16 bg-white">
+  <div class="container mx-auto px-4 max-w-5xl">
+    <h2 class="text-3xl font-bold text-center mb-10">Nous <span class="text-orange-600">trouver</span></h2>
+    <div class="grid md:grid-cols-2 gap-10">
+      <div>
+        <div class="space-y-4 mb-8">
+          <a data-map href="#" target="_blank" rel="noopener" class="flex items-start gap-4 hover:text-orange-600"><i class="fas fa-map-marker-alt text-orange-600 text-xl mt-1"></i><span data-address></span></a>
+          <a data-tel href="#" class="flex items-start gap-4 hover:text-orange-600"><i class="fas fa-phone text-orange-600 text-xl mt-1"></i><span data-phone></span></a>
+          <a data-wa href="#" target="_blank" rel="noopener" class="flex items-start gap-4 hover:text-green-700"><i class="fab fa-whatsapp text-green-600 text-xl mt-1"></i><span>Écrire sur WhatsApp</span></a>
+          <div id="socials" class="flex items-start gap-4"><i class="fas fa-share-alt text-orange-600 text-xl mt-1"></i><span class="flex gap-4"></span></div>
+        </div>
+        <h3 class="text-xl font-bold mb-3">Horaires d'ouverture</h3>
+        <div id="hours" class="space-y-2"></div>
+      </div>
+      <div class="rounded-xl overflow-hidden shadow-md min-h-[320px]">
+        <iframe id="map" title="Carte du restaurant à Niamey" class="w-full h-full min-h-[320px]" loading="lazy" referrerpolicy="no-referrer-when-downgrade" style="border:0"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-gray-900 text-white py-8">
+  <div class="container mx-auto px-4 text-center">
+    <p class="font-bold text-lg mb-1">Saveurs du Niger</p>
+    <p class="text-gray-400 text-sm mb-2">Cuisine nigérienne · <span data-address></span></p>
+    <p class="text-gray-400 text-sm">&copy; <span id="year"></span> Saveurs du Niger. Tous droits réservés.</p>
+  </div>
+</footer>
+
+<!-- Barre d'actions mobile -->
+<nav class="md:hidden fixed bottom-0 inset-x-0 z-40 bg-white border-t shadow-[0_-2px_10px_rgba(0,0,0,.1)] grid grid-cols-3 text-center text-sm font-semibold" aria-label="Actions rapides">
+  <a data-tel href="#" class="py-3 text-orange-700"><i class="fas fa-phone block text-xl mb-1"></i>Appeler</a>
+  <a data-wa href="#" target="_blank" rel="noopener" class="py-3 text-green-700"><i class="fab fa-whatsapp block text-xl mb-1"></i>WhatsApp</a>
+  <a data-map href="#" target="_blank" rel="noopener" class="py-3 text-blue-700"><i class="fas fa-location-arrow block text-xl mb-1"></i>Itinéraire</a>
+</nav>
+
+<!-- Panier -->
+<button id="cart-btn" class="hidden fixed right-4 bottom-20 md:bottom-6 z-50 bg-green-600 hover:bg-green-700 text-white font-bold px-5 py-3 rounded-full shadow-lg" aria-label="Voir ma commande">
+  <i class="fas fa-shopping-basket mr-2"></i><span id="cart-count">0</span> · <span id="cart-total-btn"></span>
+</button>
+<div id="cart-panel" class="hidden fixed inset-0 z-50 bg-black/50 flex items-end md:items-center justify-center" role="dialog" aria-modal="true" aria-label="Ma commande">
+  <div class="bg-white w-full md:max-w-lg rounded-t-2xl md:rounded-2xl p-6 max-h-[90vh] overflow-y-auto">
+    <div class="flex justify-between items-center mb-4">
+      <h3 class="text-xl font-bold">Ma commande</h3>
+      <button id="cart-close" class="text-2xl px-2" aria-label="Fermer">&times;</button>
+    </div>
+    <div id="cart-lines" class="divide-y mb-4"></div>
+    <p class="flex justify-between font-bold text-lg mb-4"><span>Total</span><span id="cart-total"></span></p>
+    <div class="grid gap-3 mb-4">
+      <input id="c-name" placeholder="Votre nom" class="px-4 py-2 border rounded-lg" autocomplete="name">
+      <select id="c-mode" class="px-4 py-2 border rounded-lg"><option>Sur place</option><option>À emporter</option><option>Livraison</option></select>
+      <input id="c-address" placeholder="Adresse / quartier (si livraison)" class="px-4 py-2 border rounded-lg">
+    </div>
+    <button id="cart-send" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 rounded-lg"><i class="fab fa-whatsapp mr-1"></i> Envoyer ma commande sur WhatsApp</button>
+    <button id="cart-clear" class="w-full mt-2 text-gray-500 py-2 text-sm">Vider la commande</button>
+  </div>
+</div>
+
+<script>
+/* ===================================================================
+   ✏️ ZONE À MODIFIER – toutes les informations du restaurant
+   =================================================================== */
+const CONFIG = {
+  nom: "Saveurs du Niger",
+  telephone: "+227 XX XX XX XX",          // affiché : à remplacer par le vrai numéro
+  whatsapp: "227XXXXXXXX",                 // chiffres uniquement, avec l'indicatif (ex : 22790123456)
+  adresse: "Niamey – Niger (adresse exacte à préciser)",
+  carte: "Niamey, Niger",          // texte cherché sur Google Maps (mettez l'adresse exacte)
+  instagram: "",                           // ex : "nomducompte"
+  facebook: "",                            // ex : "nomdelapage"
+  snapchat: "",                            // ex : "nomducompte"
+  // Fuseau de Niamey : UTC+1. Jours : 0 = dimanche … 6 = samedi. null = fermé
+  horaires: [
+    { jours: "Lundi – Jeudi", ouvre: "11:00", ferme: "22:00", d: [1,2,3,4] },
+    { jours: "Vendredi – Samedi", ouvre: "11:00", ferme: "23:00", d: [5,6] },
+    { jours: "Dimanche", ouvre: "12:00", ferme: "22:00", d: [0] }
+  ]
+};
+
+const CATEGORIES = { plats: "Plats", grillades: "Grillades", poissons: "Poissons", boissons: "Boissons" };
+
+// image : facultatif (adresse web ou "images/plat.jpg"). Sans image, une icône est affichée.
+const PLATS = [
+  { nom: "Riz gras", desc: "Riz mijoté dans une sauce tomate parfumée, servi avec poulet ou viande.", prix: 2500, cat: "plats", epice: false, icone: "fa-bowl-rice", image: "" },
+  { nom: "Riz sauce arachide", desc: "Riz blanc nappé d'une sauce onctueuse à l'arachide et à la viande.", prix: 2500, cat: "plats", epice: false, icone: "fa-bowl-food", image: "" },
+  { nom: "Couscous de mil & sauce", desc: "Couscous de mil traditionnel, sauce gombo ou sauce feuilles.", prix: 2000, cat: "plats", epice: false, icone: "fa-bowl-food", image: "" },
+  { nom: "Dambou", desc: "Couscous de feuilles de moringa ou de navet, oignons, cacahuètes et assaisonnement maison.", prix: 1500, cat: "plats", epice: false, icone: "fa-leaf", image: "" },
+  { nom: "Brochettes de bœuf (soya)", desc: "Brochettes marinées au kuli-kuli (épices à l'arachide), grillées au feu de bois.", prix: 1500, cat: "grillades", epice: true, icone: "fa-fire", image: "" },
+  { nom: "Poulet braisé", desc: "Demi-poulet mariné et braisé, servi avec oignons, piment et alloco ou frites.", prix: 4500, cat: "grillades", epice: true, icone: "fa-drumstick-bite", image: "" },
+  { nom: "Tchoukou grillé", desc: "Fromage traditionnel du Niger (tchoukou) grillé, servi avec sauce pimentée.", prix: 1500, cat: "grillades", epice: true, icone: "fa-cheese", image: "" },
+  { nom: "Kilichi", desc: "Viande séchée épicée, spécialité nigérienne, à grignoter ou à partager.", prix: 2000, cat: "grillades", epice: true, icone: "fa-pepper-hot", image: "" },
+  { nom: "Capitaine braisé", desc: "Capitaine du fleuve Niger braisé, sauce maison, oignons et citron.", prix: 6000, cat: "poissons", epice: false, icone: "fa-fish", image: "" },
+  { nom: "Poisson frit & alloco", desc: "Poisson frit croustillant avec bananes plantain et sauce pimentée.", prix: 4000, cat: "poissons", epice: true, icone: "fa-fish", image: "" },
+  { nom: "Jus de bissap", desc: "Boisson fraîche à la fleur d'hibiscus, menthe et vanille.", prix: 500, cat: "boissons", epice: false, icone: "fa-glass-water", image: "" },
+  { nom: "Jus de gingembre", desc: "Jus pressé de gingembre frais, sucré juste ce qu'il faut.", prix: 500, cat: "boissons", epice: true, icone: "fa-glass-water", image: "" },
+  { nom: "Jus de baobab (bouye)", desc: "Jus onctueux du fruit du baobab, riche et rafraîchissant.", prix: 600, cat: "boissons", epice: false, icone: "fa-glass-water", image: "" },
+  { nom: "Fura da nono", desc: "Boule de mil dans du lait caillé, la boisson traditionnelle.", prix: 800, cat: "boissons", epice: false, icone: "fa-mug-hot", image: "" }
+];
+
+// Exemples à remplacer par de vrais avis de clients
+const AVIS = [
+  { nom: "Client(e) 1", texte: "Le riz gras est exactement comme à la maison. Service rapide et accueillant !", note: 5 },
+  { nom: "Client(e) 2", texte: "Le capitaine braisé est excellent, très frais. Je reviendrai avec ma famille.", note: 5 },
+  { nom: "Client(e) 3", texte: "Les brochettes et le bissap sont un régal. Commande WhatsApp très pratique.", note: 5 }
+];
+/* ============================ FIN DE LA ZONE ============================ */
+
+const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const fcfa = n => n.toLocaleString('fr-FR') + ' FCFA';
+const waLink = (txt) => `https://wa.me/${CONFIG.whatsapp}` + (txt ? `?text=${encodeURIComponent(txt)}` : '');
+
+// Coordonnées
+$$('[data-wa]').forEach(a => a.href = waLink(`Bonjour ${CONFIG.nom}, `));
+$$('[data-tel]').forEach(a => a.href = 'tel:+' + CONFIG.whatsapp);
+$$('[data-phone]').forEach(e => e.textContent = CONFIG.telephone);
+$$('[data-address]').forEach(e => e.textContent = CONFIG.adresse);
+$$('[data-map]').forEach(a => a.href = 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(CONFIG.carte));
+$('#map').src = 'https://www.google.com/maps?q=' + encodeURIComponent(CONFIG.carte) + '&output=embed';
+$('#year').textContent = new Date().getFullYear();
+const soc = [['instagram','fa-instagram','https://instagram.com/'],['facebook','fa-facebook-f','https://facebook.com/'],['snapchat','fa-snapchat-ghost','https://www.snapchat.com/add/']]
+  .filter(s => CONFIG[s[0]]).map(s => `<a href="${s[2]}${esc(CONFIG[s[0]])}" target="_blank" rel="noopener" aria-label="${s[0]}" class="text-2xl hover:text-orange-600"><i class="fab ${s[1]}"></i></a>`).join('');
+if (soc) $('#socials span').innerHTML = soc; else $('#socials').remove();
+
+// Horaires + statut ouvert/fermé (heure de Niamey)
+$('#hours').innerHTML = CONFIG.horaires.map(h => `<div class="flex justify-between border-b pb-2"><span>${h.jours}</span><span>${h.ouvre.replace(':','h')} – ${h.ferme.replace(':','h')}</span></div>`).join('');
+$$('[data-hours-short]').forEach(e => e.textContent = 'Ouvert tous les jours · ' + CONFIG.horaires[0].ouvre.replace(':','h') + ' – ' + CONFIG.horaires[0].ferme.replace(':','h'));
+(function status() {
+  const now = new Date(new Date().toLocaleString('en-US', { timeZone: 'Africa/Niamey' }));
+  const m = now.getHours() * 60 + now.getMinutes(), toM = t => +t.slice(0,2) * 60 + +t.slice(3);
+  const h = CONFIG.horaires.find(x => x.d.includes(now.getDay()));
+  const open = h && m >= toM(h.ouvre) && m < toM(h.ferme);
+  $('#open-status').innerHTML = open
+    ? `<i class="fas fa-circle text-green-400 mr-2 text-xs"></i>Ouvert maintenant · jusqu'à ${h.ferme.replace(':','h')}`
+    : `<i class="fas fa-circle text-red-400 mr-2 text-xs"></i>Fermé actuellement · ouvre à ${(h && m < toM(h.ouvre) ? h : CONFIG.horaires.find(x => x.d.includes((now.getDay()+1)%7)) || CONFIG.horaires[0]).ouvre.replace(':','h')}`;
+})();
+
+// Menu
+let current = 'all';
+$('#filters').innerHTML = [['all','Tout voir'], ...Object.entries(CATEGORIES)].map(([k,v]) =>
+  `<button data-cat="${k}" class="px-5 py-2 rounded-full font-medium border ${k==='all'?'bg-orange-600 text-white border-orange-600':'bg-white hover:bg-orange-50'}">${v}</button>`).join('');
+function renderMenu() {
+  $('#menu-items').innerHTML = PLATS.map((p,i) => ({p,i})).filter(({p}) => current==='all' || p.cat===current).map(({p,i}) => `
+    <article class="dish bg-white rounded-xl shadow-md overflow-hidden border flex flex-col">
+      ${p.image ? `<img src="${esc(p.image)}" alt="${esc(p.nom)}" class="h-44 w-full object-cover" loading="lazy">`
+                : `<div class="h-24 bg-gradient-to-r from-orange-100 to-green-100 flex items-center justify-center"><i class="fas ${p.icone} text-orange-600 text-4xl"></i></div>`}
+      <div class="p-5 flex flex-col flex-1">
+        <h3 class="text-lg font-bold mb-1">${esc(p.nom)} ${p.epice ? '<i class="fas fa-pepper-hot text-red-500 text-sm" title="Épicé"></i>' : ''}</h3>
+        <p class="text-gray-600 text-sm mb-4 flex-1">${esc(p.desc)}</p>
+        <div class="flex justify-between items-center">
+          <span class="text-orange-700 font-bold">${fcfa(p.prix)}</span>
+          <button data-add="${i}" class="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-lg font-medium"><i class="fas fa-plus mr-1"></i> Ajouter</button>
+        </div>
+      </div>
+    </article>`).join('');
+}
+$('#filters').addEventListener('click', e => {
+  const b = e.target.closest('[data-cat]'); if (!b) return;
+  current = b.dataset.cat;
+  $$('#filters button').forEach(x => x.className = 'px-5 py-2 rounded-full font-medium border ' + (x===b ? 'bg-orange-600 text-white border-orange-600' : 'bg-white hover:bg-orange-50'));
+  renderMenu();
+});
+renderMenu();
+
+// Panier
+const cart = {}; // index -> quantité
+const total = () => Object.entries(cart).reduce((s,[i,q]) => s + PLATS[i].prix * q, 0);
+function renderCart() {
+  const n = Object.values(cart).reduce((a,b) => a+b, 0);
+  $('#cart-btn').classList.toggle('hidden', n === 0);
+  $('#cart-count').textContent = n + (n>1 ? ' articles' : ' article');
+  $('#cart-total-btn').textContent = $('#cart-total').textContent = fcfa(total());
+  $('#cart-lines').innerHTML = Object.entries(cart).map(([i,q]) => `
+    <div class="py-3 flex items-center justify-between gap-3">
+      <span class="flex-1">${esc(PLATS[i].nom)}<br><small class="text-gray-500">${fcfa(PLATS[i].prix)}</small></span>
+      <span class="flex items-center gap-2">
+        <button data-dec="${i}" class="w-8 h-8 rounded-full border" aria-label="Retirer un">−</button>
+        <b>${q}</b>
+        <button data-inc="${i}" class="w-8 h-8 rounded-full border" aria-label="Ajouter un">+</button>
+      </span>
+    </div>`).join('');
+  if (n === 0) $('#cart-panel').classList.add('hidden');
+}
+document.addEventListener('click', e => {
+  const a = e.target.closest('[data-add],[data-inc],[data-dec]'); if (!a) return;
+  const i = a.dataset.add ?? a.dataset.inc ?? a.dataset.dec;
+  if (a.dataset.dec !== undefined) { cart[i]--; if (cart[i] <= 0) delete cart[i]; } else cart[i] = (cart[i]||0) + 1;
+  renderCart();
+});
+$('#cart-btn').onclick = () => $('#cart-panel').classList.remove('hidden');
+$('#cart-close').onclick = () => $('#cart-panel').classList.add('hidden');
+$('#cart-panel').addEventListener('click', e => { if (e.target.id === 'cart-panel') e.target.classList.add('hidden'); });
+$('#cart-clear').onclick = () => { for (const k in cart) delete cart[k]; renderCart(); };
+$('#cart-send').onclick = () => {
+  const lines = Object.entries(cart).map(([i,q]) => `• ${q} x ${PLATS[i].nom} (${fcfa(PLATS[i].prix * q)})`).join('\n');
+  let msg = `Bonjour ${CONFIG.nom}, je souhaite commander :\n\n${lines}\n\nTotal : ${fcfa(total())}\nMode : ${$('#c-mode').value}`;
+  if ($('#c-name').value.trim()) msg = `Nom : ${$('#c-name').value.trim()}\n` + msg;
+  if ($('#c-address').value.trim()) msg += `\nAdresse : ${$('#c-address').value.trim()}`;
+  window.open(waLink(msg), '_blank');
+};
+
+// Réservation
+$('#r-date').min = new Date().toISOString().split('T')[0];
+$('#resa-form').addEventListener('submit', e => {
+  e.preventDefault();
+  const v = id => $('#'+id).value.trim();
+  let msg = `Bonjour ${CONFIG.nom}, je souhaite réserver une table :\n\n• Nom : ${v('r-name')}\n• Personnes : ${v('r-n')}\n• Date : ${v('r-date').split('-').reverse().join('/')}\n• Heure : ${v('r-time')}`;
+  if (v('r-note')) msg += `\n• Précisions : ${v('r-note')}`;
+  window.open(waLink(msg), '_blank');
+});
+
+// Témoignages
+$('#testimonials').innerHTML = AVIS.map(t => `
+  <div class="bg-white text-gray-800 p-6 rounded-xl shadow-md">
+    <div class="text-yellow-500 mb-3">${'<i class="fas fa-star"></i>'.repeat(t.note)}</div>
+    <p class="italic mb-3">“${esc(t.texte)}”</p><p class="font-bold">${esc(t.nom)}</p>
+  </div>`).join('');
+
+// Menu mobile
+const mt = $('#menu-toggle'), mm = $('#mobile-menu');
+mt.onclick = () => { mm.classList.toggle('hidden'); mt.setAttribute('aria-expanded', !mm.classList.contains('hidden')); };
+mm.addEventListener('click', e => { if (e.target.tagName === 'A') mm.classList.add('hidden'); });
+</script>
+</body>
+</html>
