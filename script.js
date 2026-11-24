@@ -65,6 +65,7 @@ const editorForm = document.querySelector('#content-editor-form');
 const editorFields = document.querySelector('#editor-fields');
 const editorTitle = document.querySelector('#editor-title');
 const editorError = document.querySelector('#editor-error');
+const adminMode = document.body.classList.contains('admin-mode');
 let currentContentType = '';
 let content = { logos: [], testimonials: [], projects: [], demos: [] };
 let contentReady = false;
